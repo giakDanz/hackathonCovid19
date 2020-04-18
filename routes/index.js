@@ -14,4 +14,12 @@ router.get('/home', function(req, res, next) {
   res.render('home', { title: 'INICIAR SESION PARA CONTINUAR' });
 });
 
+router.get('/nuevoUsuario', function(req, res, next) {
+  res.render('register', { title: 'REGISTRO' });
+})
+
+router.get('/validacion', function(req, res, next) {
+  res.render('validacion', { title: 'Confirma tu número celular' ,
+  numero: 960169051});
+});
 module.exports = router;

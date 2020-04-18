@@ -1,0 +1,53 @@
+extends layout
+block content
+    br/br
+    h1.h1= title
+    br
+    div(class="container")
+        .row
+            .col-md-5
+                input.form-control.form-control-lg(name='nombre', placeholder='Nombre', autofocus='True')
+            .col-md-5
+                input.form-control.form-control-lg(name='apellido', placeholder='Apellido')
+        br
+        .row
+            .col-md-3
+                input.form-control.form-control-lg(name='username', placeholder='Usuario')
+            .col-md-7
+                input.form-control.form-control-lg(name='password', placeholder='Contraseña')
+        br
+        .row
+            .col-md-10
+                input.form-control.form-control-lg(name='direccion', placeholder='Dirección')
+        br
+        .row
+            .col-md-10
+                input.form-control.form-control-lg(name='celular', placeholder='Celular')
+        br
+        .row
+            .col-md-10
+                input.form-control.form-control-lg(name='ciudad', placeholder='Ciudad')
+        br
+        .row
+            .col-md-10
+                input.form-control.form-control-lg(name='correo', placeholder='Correo')
+        br
+        .row
+            .col-md-10
+                input.form-control.form-control-lg(name='contraseña', type='password',placeholder='Contraseña')
+        br
+        .row
+            .col-md-10
+                input.form-control.form-control-lg(name='repContraseña', type='password',placeholder='Repetir Contraseña')
+        br
+        b
+            .row
+                .col
+                    img(src='/images/facebook.png')
+                    | &nbsp; &nbsp;
+                    img(src='/images/twitter.png')
+                    | &nbsp; &nbsp;
+                    img(src='/images/google.png')
+                .col-md-3
+                    a(href='/validacion')
+                        img(src='/images/google.png')

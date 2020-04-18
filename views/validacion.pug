@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    .text-justify
+        .row
+            .col-sm-7
+                br/br
+                h1.h1= title
+                br/br
+                p Te enviamos un sms, ingresa el codigo de 4 digitos que te hemos enviado al #{numero}
+                .text-center
+                    img(src='/images/VECTOR-STAY-HOME-1 1.png')
+                br/br
+                a.button.btn.btn-primary.btn-lg.btn-block(type='button', href='/login') Iniciar Sesión
+                a.button.btn.btn-primary.btn-lg.btn-block(type='button', href='/nuevoUsuario') Registrarse
