@@ -5,9 +5,6 @@ html
     link(rel='stylesheet' href = '/bower_components/bootstrap/dist/css/bootstrap.css')
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      a.navbar-brand(href='#') Navbar w/ text
-      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarText', aria-controls='navbarText', aria-expanded='false', aria-label='Toggle navigation')
-        span.navbar-toggler-icon
       #navbarText.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
           li.nav-item.active
@@ -20,19 +17,19 @@ html
             a.nav-link(href='#') Pricing
         span.navbar-text
           | Navbar text with an inline element
-    .text-center
-      .row
-        .col(style='background-color: #FFFBF0;')
-          .row
+    .row
+      .col(style='background-color: #FFFBF0;')
+        .row
+          br
+        .row
+          .col
+            img(src='/images/VECTOR-STAY-HOME 4.png')
+        .row
+          .col
             br
-          .row
-            .col
-              img(src='/images/VECTOR-STAY-HOME 4.png')
-          .row
-            .col
-              br
+            .text-center
               img(src='/images/Edu..png')
-        .col
-          block content
+      .col
+        block content
   script(src='/bower_components/jquery/dist/jquery.js')
   script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
