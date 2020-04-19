@@ -1,0 +1,53 @@
+extends layout
+block content
+    br/br
+    h1.h1= title
+    br
+    form(method = 'POST', action = '/nuevoUsuario')
+        div(class="container")
+            .row
+                .col-md-5
+                    input.form-control.form-control-lg(name='nombre', placeholder='Nombre', autofocus='True')
+                .col-md-5
+                    input.form-control.form-control-lg(name='apellido', placeholder='Apellido')
+            br
+            .row
+                .col-md-3
+                    input.form-control.form-control-lg(name='tipoDoc', placeholder='Tipo de Doc')
+                .col-md-7
+                    input.form-control.form-control-lg(name='documento', placeholder='N° de documento')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='direccion', placeholder='Dirección')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='celular', placeholder='Celular')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='ciudad', placeholder='Ciudad')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='correo', placeholder='Correo')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='contrasena', type='password', placeholder='Contraseña')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='repContrasena', type='password', placeholder='Repetir Contraseña')
+            br
+            b
+                .row
+                    .col
+                        img(src='/images/facebook.png')
+                        | &nbsp; &nbsp;
+                        img(src='/images/twitter.png')
+                        | &nbsp; &nbsp;
+                        img(src='/images/google.png')
+                    .col-md-3
+                        input(type='image', src='/images/google.png')

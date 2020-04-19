@@ -1,0 +1,47 @@
+extends layout
+block content
+    br/br
+    h1.h1= title
+    br
+    form(method = 'POST', action = '/nuevoRestaurante')
+        div(class="container")
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='nombre', placeholder='Nombre de restaurante', autofocus='True')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='ruc', placeholder='RUC')
+            br
+            .row
+                .col-md-5
+                    input.form-control.form-control-lg(name='operador', placeholder='Operador')
+                .col-md-5
+                    input.form-control.form-control-lg(name='celular', placeholder='Celular')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='distrito', placeholder='Distrito')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='direccion', placeholder='Dirección')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='contrasena', type='password', placeholder='Contraseña')
+            br
+            .row
+                .col-md-10
+                    input.form-control.form-control-lg(name='repContrasena', type='password', placeholder='Repetir Contraseña')
+            br
+            b
+                .row
+                    .col
+                        img(src='/images/facebook.png')
+                        | &nbsp; &nbsp;
+                        img(src='/images/twitter.png')
+                        | &nbsp; &nbsp;
+                        img(src='/images/google.png')
+                    .col-md-3
+                        input(type='image', src='/images/google.png')

@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator');
 
 let Usuario = require('../models/usuario');
-
+let Restaurante = require('../models/restaurante');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'BIENVENIDOS' });
@@ -52,72 +52,83 @@ router.post('/nuevoUsuario', [
   const repContrasena = req.body.repContrasena;
   const errors = validationResult(req);
   if(!errors.isEmpty()){
-    return res.status(422).json({
+    return res.redirect('/nuevoRestaurante', {
       errors: errors.array()
-    });
+
+    })
   }
-  res.status(202).json({
-    success: 'Ok'
-  });
-  /*let newUser = new Usuario({
+  let newUser = new User({
     nombre: nombre,
-    apellido: apellido,
-    tipoDoc: tipoDoc,
-    documento: documento,
-    direccion: direccion,
+    ruc: ruc,
+    operador: operador,
     celular: celular,
+    distrito: distrito,
+    direccion: direccion,
     ciudad: ciudad,
-    correo: correo,
     contrasena: contrasena,
-    repContrasena: repContrasena,
   })
   newUser.save((err) => {
-    if(err){
+    if (err) {
       console.log(err);
       return;
     }
-  })*/
-
-  /*let errors = req.validationErrors();
-
-  if(errors){
-    res.render('crearUsuario', {
-      errors:errors
-    });
-  }else{
-    let newUser = new User({
-      nombre: nombre,
-      apellido: apellido,
-      tipoDoc: tipoDoc,
-      documento: documento,
-      direccion: direccion,
-      celular: celular,
-      ciudad: ciudad,
-      correo: correo,
-      contrasena: contrasena,
-      repContrasena: repContrasena,
-    })
-    bcrypt.genSalt(10, (err,salt) => {
-      bcrypt.hash(newUser.password, salt, (err, hash) => {
-        if(err){
-          console.log(err)
-        }
-        newUser.password = hash;
-        console.log(hash)
-        newUser.save((err) => {
-          if(err){
-            console.log(err);
-            return;
-          }
-          req.flash('success', 'Usuario creado');
-          res.redirect('/home')
-        })
-      })
-    })
-  }*/
-});
+    res.redirect('/home');
+  })});
 
 router.get('/home', (req, res) => {
   res.render('home')
 })
+
+router.get('/registrar', (req, res) => {
+  res.render('register', {title: '¿Cómo deseas registrarse?'})
+})
+
+router.get('/nuevoRestaurante', (req, res) => {
+  res.render('registerRestaurant', {title: 'Registro para restaurante'})
+})
+
+
+router.post('/nuevoRestaurante', [
+  check('nombre', 'Nombre es obligatorio').not().isEmpty(),
+  check('ruc', 'Ingresar RUC').not().isEmpty(),
+  check('operador', 'Ingresar Operador').not().isEmpty(),
+  check('celular', 'Celular es obligatorio').not().isEmpty(),
+  check('distrito', 'Distrito es obligatorio').not().isEmpty(),
+  check('direccion', 'Direccion es obligatorio').not().isEmpty(),
+  check('contrasena', 'Contraseña es obligatorio').not().isEmpty(),
+  check('repContrasena', 'Repetir contraseña').not().isEmpty()
+], function(req, res) {
+  const nombre = req.body.nombre;
+  const ruc = req.body.ruc;
+  const operador = req.body.operador;
+  const celular = req.body.celular;
+  const distrito = req.body.distrito;
+  const direccion = req.body.direccion;
+  const ciudad = req.body.ciudad;
+  const contrasena = req.body.contrasena;
+  const repContrasena = req.body.repContrasena;
+  const errors = validationResult(req);
+  if(!errors.isEmpty()){
+    return res.redirect('/nuevoRestaurante', {
+      errors: errors.array()
+    })
+  }
+  let newRestaurante = new Restaurante({
+    nombre: nombre,
+    ruc: ruc,
+    operador: operador,
+    celular: celular,
+    distrito: distrito,
+    direccion: direccion,
+    ciudad: ciudad,
+    contrasena: contrasena,
+  })
+  newRestaurante.save((err) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    res.redirect('/main');
+  })
+});
 module.exports = router;
