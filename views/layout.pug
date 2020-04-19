@@ -30,6 +30,9 @@ html
             .text-center
               img(src='/images/Edu..png')
       .col
+        if errors
+          each error, i in errors
+            div(class="alert alert-danger") #{error.msg}
         block content
   script(src='/bower_components/jquery/dist/jquery.js')
   script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
