@@ -2,13 +2,58 @@ doctype html
 html
     head
         link(rel='stylesheet', href='https://unpkg.com/leaflet@1.6.0/dist/leaflet.css', integrity='sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==', crossorigin='')
+        link(rel='stylesheet' href = '/bower_components/bootstrap/dist/css/bootstrap.css')
         script(src='https://unpkg.com/leaflet@1.6.0/dist/leaflet.js', integrity='sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==', crossorigin='')
+        script(src='/bower_components/jquery/dist/jquery.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
         style.
             #mapid { height: 1024px; }
+            #message-form {
+                z-index: 999;
+                position: absolute;
+                top: 144px;
+                left: 129px;
+            }
+            #buscar {
+                z-index: 999;
+                position: absolute;
+                right: 8.82%;
+                top: 14.06%;
+            }
     body
         #mapid
+        #message-form.card(style='width: 395px;')
+            br
+            .text-center
+                img.card-img(style='width:120px; height:120px', src='/images/fotoUsuario.png', alt='Card image cap')
+                p.card-title
+                    | Hola Sel
+            .card-body
+                p.card-text
+                    .row
+                        .col
+                            img(style='width:107px; height:107px', src='/images/restaurante.png')
+                            | &nbsp; &nbsp;
+                            img(style='width:107px; height:107px', src='/images/cafe.png')
+                            | &nbsp; &nbsp;
+                            img(style='width:107px; height:107px', src='/images/bares.png')
+                    hr
+                    .row
+                        .col
+                            img(src='/images/pagos.png')
+                    .row
+                        .col
+                            img(src='/images/progEventos.png')
+                    .row
+                        .col
+                            img(src='/images/cerrarSesion.png')
+        #buscar.input-group(style='width: 720px; height: 70px')
+            input.form-control(style='width: 720px; height: 70px', type='search', placeholder='Busca tu restaurante favorito')
+            span.input-group-append
+                button.btn(style='background: #FFFFFF;', type='button')
+                    img(src='/images/lupa.png')
 
-        script.
+    script.
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
                     lat = position.coords.latitude;
