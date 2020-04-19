@@ -1,6 +1,6 @@
 let mongoose = require('mongoose')
 
-let RestauranteSchema = mongoose.Schema({
+let EstablecimientoSchema = mongoose.Schema({
     nombre:{
         type: String,
         required: true
@@ -9,28 +9,20 @@ let RestauranteSchema = mongoose.Schema({
       type: Number,
       required: true
     },
-    tipoDoc:{
-        type: String,
-        required: true
-    },
-    documento:{
-        type: String,
-        required: true
-    },
-    direccion:{
+    operador:{
         type: String,
         required: true
     },
     celular:{
+        type: String,
+        required: true
+    },
+    distrito:{
+        type: String,
+        required: true
+    },
+    direccion:{
         type: Number,
-        required: true
-    },
-    ciudad:{
-        type: String,
-        required: true
-    },
-    correo:{
-        type: String,
         required: true
     },
     contrasena:{
@@ -39,4 +31,4 @@ let RestauranteSchema = mongoose.Schema({
     }
 });
 
-const Restaurante = module.exports = mongoose.model('Restaurante', RestauranteSchema)
+const Establecimiento = module.exports = mongoose.model('Establecimiento', EstablecimientoSchema, "establecimientos")

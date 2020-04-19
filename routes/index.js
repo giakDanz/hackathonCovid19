@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator');
 
 let Usuario = require('../models/usuario');
-let Restaurante = require('../models/restaurante');
+let Establecimiento = require('../models/establecimiento');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'BIENVENIDOS' });
@@ -15,7 +15,11 @@ router.get('/login', function(req, res, next) {
 });
 
 router.get('/home', function(req, res, next) {
-  res.render('home', { title: 'INICIAR SESION PARA CONTINUAR' });
+  Establecimiento.find({}, (err, establecimientos) => {
+    res.render('home', {
+      establecimientos: establecimientos
+    })
+  })
 });
 
 router.get('/nuevoUsuario', function(req, res, next) {
@@ -74,10 +78,6 @@ router.post('/nuevoUsuario', [
     }
     res.redirect('/home');
   })});
-
-router.get('/home', (req, res) => {
-  res.render('home')
-})
 
 router.get('/registrar', (req, res) => {
   res.render('register', {title: '¿Cómo deseas registrarse?'})

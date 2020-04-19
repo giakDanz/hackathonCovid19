@@ -57,6 +57,20 @@ html
                 button.btn(style='background: #FFFFFF;', type='button')
                     img(src='/images/lupa.png')
 
+        #exampleModalCenter.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalCenterTitle', aria-hidden='true')
+            .modal-dialog.modal-dialog-centered(role='document')
+                .modal-content
+                    .modal-header
+                        h5#exampleModalLongTitle.modal-title Taco Tico
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                    .modal-body
+                        | ...
+                    .modal-footer
+                        button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                        button.btn.btn-primary(type='button') Save changes
+
+
     script.
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
@@ -70,6 +84,17 @@ html
                     const tiles = L.tileLayer(tileUrl, {attribution});
                     tiles.addTo(mymap);
                     const marker = L.marker([lat, lon]).addTo(mymap);
+                    const locales = L.marker([-12.0755149, -77.0673452]).addTo(mymap).bindPopup(
+                        '<div class="card" style="width: 18rem;">\n' +
+                        '  <img class="card-img-top" src="/images/Tacoticologo.jpg">\n' +
+                        '  <div class="card-body">\n' +
+                        '    <h5 class="card-title">Test1</h5>\n' +
+                        '    <p class="card-text">Restaurante test 1.</p>\n' +
+                        '    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">\n' +
+                        '  Ver Restaurante\n' +
+                        '</button>' +
+                        '  </div>\n' +
+                        '</div>')
                 });
             } else {
                 x.innerHTML = "Geolocation is not supported by this browser.";
